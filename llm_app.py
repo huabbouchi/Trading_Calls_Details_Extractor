@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-import json
 
 # Function to parse the LLM response into a structured format
 def parse_llm_output(llm_output):
@@ -42,33 +41,9 @@ def extract_trading_details_with_gpt(messages, api_key):
             presence_penalty=0.0
         )
         llm_output = response.choices[0].text.strip()  # Get LLM output
-        #return parse_llm_output(llm_output)  # Parse LLM output
-        transactions = parse_llm_output(llm_output)
-        return json.dumps(transactions)  # Convert to JSON format
+        return parse_llm_output(llm_output)  # Parse LLM output
     except Exception as e:
-        return json.dumps({"error": str(e)})  # Return error message as JSON
-
-def extract_trading_details_with_gpt(messages, api_key):
-    openai.api_key = api_key
-    prompt = f"Extract the symbol, strike price, call/put, date, and price from each trading call message and format each as 'Symbol, Strike Price, Call/Put, Date, Price':\n\n{messages}"
-    
-    try:
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt,
-            temperature=0.1,
-            max_tokens=150,
-            top_p=1.0,
-            frequency_penalty=0.0,
-            presence_penalty=0.0
-        )
-        llm_output = response.choices[0].text.strip()
-        transactions = parse_llm_output(llm_output)
-        return json.dumps(transactions)  # Convert to JSON format
-    except Exception as e:
-        return json.dumps({"error": str(e)})  # Return error message as JSON
-
-
+        return f"An error occurred: {e}"
 
 # Streamlit app layout
 st.title("Trading Calls Details Extractor")
