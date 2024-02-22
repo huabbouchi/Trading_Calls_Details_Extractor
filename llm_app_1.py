@@ -64,6 +64,6 @@ if st.button("Extract Details"):  # Button to trigger extraction
         if extracted_details:
             st.success("Extracted Details:")
             for detail in extracted_details:
-                st.info(detail)  # Display each transaction's details
+                st.json(detail)  # Display each transaction's details
         else:
             st.error("No details were extracted. Please check your input and try again.")
