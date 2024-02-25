@@ -42,9 +42,14 @@ def extract_trading_details_with_gpt(messages, api_key):
             presence_penalty=0.0
         )
         llm_output = response.choices[0].text.strip()  # Get LLM output
-        return parse_llm_output(llm_output)  # Parse LLM output
+        transactions = parse_llm_output(llm_output)
+        return json.dumps(transactions)  # Convert to JSON format
     except Exception as e:
-        return f"An error occurred: {e}"
+        return json.dumps({"error": str(e)})  # Return error message as JSON
+        
+    #     return parse_llm_output(llm_output)  # Parse LLM output
+    # except Exception as e:
+    #     return f"An error occurred: {e}"
 
 
 # Streamlit app layout
