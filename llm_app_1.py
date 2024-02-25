@@ -32,7 +32,7 @@ def extract_trading_details_with_gpt(messages, api_key):
     prompt = f"Extract the symbol, strike price, call/put, date, and price from each trading call message and format each as 'Symbol, Strike Price, Call/Put, Date, Price':\n\n{messages}"
     
     try:
-        response = openai.completions.create(
+        response = openai.Completion.create(
             engine="gpt-3.5-turbo-instruct",  # Engine for the completion
             prompt=prompt,  # Provide the prompt
             temperature=0.1,
