@@ -1,0 +1,13 @@
+messages,api_key,output,flag,username,timestamp
+"'@everyone
+$SPOT 240 CALL 2/16 @ 1.87 SWING / DAY TRADE 🚨
+
+@everyone
+$CVS 80 CALL 2/16 @ 0.21 DAY TRADE 🚨
+
+@everyone
+$WFC 51 CALL 2/16 @ 0.11 SWING / DAY TRADE 🚨",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,"[
+  {
+    ""error"": ""module 'openai' has no attribute 'Completion'""
+  }
+]",,,2024-02-22 14:40:55.032798
